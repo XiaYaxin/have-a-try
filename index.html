@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭汽车管理计算器</title>
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+</head>
+
+<body>
+        <div class="bodyStyle">
+            <caption>
+                <h1  >家庭汽车管理计算器</h1>
+                     <br>
+                    
+            </caption>
+            <ul class="menu">
+                <li onclick="showPage('gouMaiJiSuanQi')">汽车购买计算器</li>
+                <li onclick="showPage('dailyJiSuanQi')">汽车日常管理计算器</li>
+                <li onclick="showJisSunaqi()">标准计算器</li>
+            </ul>
+            <br>
+            <br>
+            <div id="gouMaiJiSuanQi">
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <h3>贷款计算</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>裸车价 单位(元):</td>
+                        <td><input type="text" id="chejia"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>首付比例:</td>
+                        <td>&nbsp;&nbsp;&nbsp;<input type="number" id="shoufubili">%</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>贷款年限:</td>
+                        <td>
+                            <select name="" id="daikuannian">
+                                <option value="1" selected>1年</option>
+                                <option value="2">2年</option>
+                                <option value="3">3年</option>
+                            </select>
+                        </td>
+                        <td>1年期、2年期和3年期车贷的总费用率分别为
+                            
+                            4%、8%、12%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><button onclick="daikuan()">计算</button></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+
+                        <td>计算还贷总额：</td>
+                        <td id="huandaizonge"></td>
+                    </tr>
+                    <tr>
+
+                        <td>计算利息总额：</td>
+                        <td id="lixizonge"></td>
+                    </tr>
+                    <tr>
+
+                        <td>月供金额：</td>
+                        <td id="yuegongjine"></td>
+                    </tr>
+                </table>
+
+
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <h3>车辆购置税计算</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>是否含税:</td>
+                        <td>
+                            <select name="" id="isShui">
+                                <option value="true" selected>是</option>
+                                <option value="false">否</option>
+                            </select>
+                        </td>
+                        <td>购置价（含税价）/1.17*10%
+                            <br>
+                            购置价（不含税价）的10%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>购置价:</td>
+                        <td><input type="text" id="gouzhijia"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><button onclick="gouzhi()">计算</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" id="gouzhishiResult">结果:</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <h3>机动车交通事故责任强制保险</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>座位数</td>
+                        <td><input type="number" id="zuoweishu"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><button onclick="jiaozhizerenxian()">计算</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" id="jiaozhizerenxianResult">结果:</td>
+                    </tr>
+                </table>
+
+
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <h3>车辆损失险</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>车价:</td>
+                        <td><input type="text" id="chejia_sunshixian"></td>
+                        <td>车价×0.9%+基础保费(342元)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><button onclick="sunshixian()">计算</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" id="sunshixianResult">结果:</td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <h3>第三者责任险</h3>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>保险额度:</td>
+                        <td>
+                            <select name="" id="disanzhezerenxian">
+                                <option value="710" selected>5万</option>
+                                <option value="1026">10万</option>
+                                <option value="1270">20万</option>
+                                <option value="1721">50万</option>
+                                <option value="1950">100万</option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"> <button onclick="disanzhezerenxian()">计算</button></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="3" id="disanzhezerenxianResult">结果:</td>
+
+                    </tr>
+                </table>
+            </div>
+
+
+
+            <div id="dailyJiSuanQi">
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <h3>汽车油费预估</h3>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>年里程数:</td>
+                        <td>
+                            <input type="text" id="nainlichen" onchange="qiyou()">km
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>100公里多少升汽油:</td>
+                        <td>
+                            <input type="text" id="yibai_sheng" onchange="qiyou()">升
+                        </td>
+                        <td>100公里约7-15升</td>
+                    </tr>
+                    <tr>
+                        <td>汽油种类:</td>
+                        <td>
+                            <select name="" id="qiyouType" onchange="qiyou()">
+                                <option value="7.28">92#汽油</option>
+                                <option value="7.74">95#汽油</option>
+                                <option value="8.59">98#汽油</option>
+                            </select>
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"> <button onclick="qiyou()">计算</button></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="3" id="qiyouResult">结果:</td>
+
+                    </tr>
+                </table>
+
+
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <h3>汽车保养费用预估</h3>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>是否按公里数:</td>
+                        <td><input type="checkbox" onchange="isGonglishu()" id="isGonglishu" value="true"></td>
+                        <td></td>
+                    </tr>
+
+                    <tr class="notGonglishu">
+                        <td>首保</td>
+                        <td><input type="radio" name="notGonglishu" value="200-700元" onchange="baoyang()"></td>
+                        <td>（保养项目有：机油、机油滤清器）</td>
+                    </tr>
+                    <tr class="notGonglishu">
+                        <td>二保</td>
+                        <td><input type="radio" name="notGonglishu" value="350-850元" onchange="baoyang()"></td>
+                        <td>（保养项目有：机油、机油滤清器、空气滤清器）</td>
+                    </tr>
+                    <tr class="notGonglishu">
+                        <td>普通保养</td>
+                        <td><input type="radio" name="notGonglishu" value="470-930元" onchange="baoyang()"></td>
+                        <td>（保养项目有：机油、机油滤清器、空气滤清器、空调滤清器）</td>
+                    </tr>
+
+                    <tr class="gonglishu" style="display: none;">
+                        <td>公里数:</td>
+                        <td><input type="number" id="kaigonglishu" onchange="baoyang()">km</td>
+                    </tr>
+
+                    <tr class="gonglishu" style="display: none;">
+                        <td colspan="3">每5000公里 200元（更换一次机油，机油滤芯）</td>
+                    </tr>
+                    <tr class="gonglishu" style="display: none;">
+                        <td colspan="3">每20000公里 400元（更换一次机油，机油滤芯，空气滤芯，火花塞，点火线）</td>
+                    </tr>
+                    <tr class="gonglishu" style="display: none;">
+                        <td colspan="3">每100000公里 600元（更换一次机油，机油滤芯，空气滤芯，火花塞，点火线，燃油滤芯）</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3"> <button onclick="baoyang()">计算</button></td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="3" id="baoyangResult">结果:</td>
+
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <h3>汽车部件保养时间管理
+                                <br>
+                                (个人使用差距较大，仅供参考)
+                            </h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>选择配件：</td>
+                        <td>
+                            <select name="" id="peijian">
+                                <option value="0" selected>--请选择--</option>
+                                <option value="6">冷冻液</option>
+                                <option value="24">电瓶</option>
+                                <option value="32">轮胎</option>
+                                <option value="24">制冻液</option>
+                                <option value="12">雨刮片</option>
+                                <option value="24">刹车油</option>
+                                <option value="24">汽车大灯</option>
+                            </select>
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>请输入上次保养的时间</td>
+                        <td><input type="date" id="lastBaoYangTime"></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+
+                        <td><button onclick="getNextBaoYangTime()">下次保养时间</button></td>
+                        <td id="nextBaoYangTime"></td>
+                        <td></td>
+                    </tr>
+
+                </table>
+            </div>
+
+
+            <div class="content">
+                <input type="button" value="清 除" class="clear" onclick="clearValue()" />
+                <input type="text" id="result" readonly="readonly" placeholder="运 算 结 果 显 示" />
+                <br />
+                <input type="button" value="1" class="number" onclick="get(this.value)" />
+                <input type="button" value="2" class="number" onclick="get(this.value)" />
+                <input type="button" value="3" class="number" onclick="get(this.value)" />
+                <input type="button" value="+" class="symbol" onclick="get(this.value)" />
+                <br />
+                <input type="button" value="4" class="number" onclick="get(this.value)" />
+                <input type="button" value="5" class="number" onclick="get(this.value)" />
+                <input type="button" value="6" class="number" onclick="get(this.value)" />
+                <input type="button" value="-" class="symbol" onclick="get(this.value)" />
+                <br />
+                <input type="button" value="7" class="number" onclick="get(this.value)" />
+                <input type="button" value="8" class="number" onclick="get(this.value)" />
+                <input type="button" value="9" class="number" onclick="get(this.value)" />
+                <input type="button" value="*" class="symbol" onclick="get(this.value)" />
+                <br />
+                <input type="button" value="0" class="number" onclick="get(this.value)" />
+                <input type="button" value="." class="symbol" onclick="get(this.value)" />
+                <input type="button" value="/" class="symbol" onclick="get(this.value)" />
+                <input type="button" value="=" class="calculate" onclick="calculate()" />
+            </div>
+            <br>
+            <br>
+            <br>
+            <br><br>
+            <br>
+    </div>
+</body>
+<script src="./js/index.js"></script>
+<script src="./js/jisaunqi.js"></script>
+
+</html>
